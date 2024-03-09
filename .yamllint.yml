@@ -10,7 +10,7 @@ rules:
       /.github/workflows/*.yaml
       /.github/workflows/*.yml
       /.github/settings.yml
-      /./pnpm-lock.yaml
+      /*-lock.yaml
   truthy:
     ignore: |
       /.github/workflows/*.yaml
