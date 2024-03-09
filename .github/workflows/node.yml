@@ -16,13 +16,13 @@ jobs:
         with:
           node-version-file: ".nvmrc"
 
-      - name: Install pnpm
+      - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
 
-      - name: Get pnpm store directory
+      - name: Get pnpm store directory 🍟
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"

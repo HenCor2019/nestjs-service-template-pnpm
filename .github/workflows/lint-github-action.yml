@@ -1,8 +1,11 @@
 ---
-name: 'Lint GitHub Actions workflows'
+name: "Lint GitHub Actions workflows"
 
 on:
   push:
+    branches: ["develop"]
+  pull_request:
+    branches: ["develop"]
 
 jobs:
   actionlint:

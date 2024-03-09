@@ -2,7 +2,10 @@
 name: "PR Size Labeler"
 
 on:
+  push:
+    branches: ["develop"]
   pull_request:
+    branches: ["develop"]
 
 jobs:
   labeler:
