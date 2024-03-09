@@ -49,7 +49,7 @@ jobs:
         # if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |
           # Bellow npm install is a workaround for https://github.com/swc-project/swc/issues/5616#issuecomment-1651214641
-          pnpm install --frozen-lockfile --save-optional \
+          pnpm install --save-optional \
             "@swc/core-linux-x64-gnu@1" \
             "@swc/core-linux-x64-musl@1"
       - name: Lint code 💅
@@ -90,7 +90,7 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |
           # Bellow npm install is a workaround for https://github.com/swc-project/swc/issues/5616#issuecomment-1651214641
-          pnpm install --frozen-lockfile --save-optional \
+          pnpm install --save-optional \
             "@swc/core-linux-x64-gnu@1" \
             "@swc/core-linux-x64-musl@1"
 
@@ -140,7 +140,7 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |
           # Bellow npm install is a workaround for https://github.com/swc-project/swc/issues/5616#issuecomment-1651214641
-          pnpm install --frozen-lockfile --save-optional \
+          pnpm install --save-optional \
             "@swc/core-linux-x64-gnu@1" \
             "@swc/core-linux-x64-musl@1"
 
