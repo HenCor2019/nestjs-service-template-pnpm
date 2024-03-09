@@ -1,8 +1,11 @@
 ---
-name: 'Greetings'
+name: "Greetings"
 
 on:
+  push:
+    branches: ["develop"]
   pull_request:
+    branches: ["develop"]
   issues:
 
 jobs:

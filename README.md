@@ -12,7 +12,7 @@
   <a href="https://github.com/AlbertHernandez/nestjs-service-template/actions/workflows/node.yml?branch=main"><img src="https://github.com/AlbertHernandez/nestjs-service-template/actions/workflows/node.yml/badge.svg?branch=main" alt="nodejs"/></a>
   <a href="https://nodejs.org/docs/latest-v20.x/api/index.html"><img src="https://img.shields.io/badge/node-20.x-green.svg" alt="node"/></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-5.x-blue.svg" alt="typescript"/></a>
-  <a href="https://docs.nestjs.com/v10/"><img src="https://img.shields.io/badge/npm-10.x-red.svg" alt="npm"/></a>
+  <a href="https://docs.nestjs.com/v10/"><img src="https://img.shields.io/badge/pnpm-10.x-red.svg" alt="pnpm"/></a>
   <a href="https://fastify.dev/"><img src="https://img.shields.io/badge/Web_Framework-Fastify_⚡-black.svg" alt="fastify"/></a>
   <a href="https://swc.rs/"><img src="https://img.shields.io/badge/Compiler-SWC_-orange.svg" alt="swc"/></a>
   <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/Test-Vitest_-yellow.svg" alt="swc"/></a>
@@ -107,7 +107,7 @@ docker-compose down
 ## ⚙️ Building
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## ✅ Testing
@@ -115,19 +115,19 @@ npm run build
 The service provide different scripts for running the tests, to run all of them you can run:
 
 ```bash
-npm run test
+pnpm run test
 ```
 
 If you are interested just in the unit tests, you can run:
 
 ```bash
-npm run test:unit
+pnpm run test:unit
 ```
 
 Or if you want e2e tests, you can execute:
 
 ```bash
-npm run test:e2e
+pnpm run test:e2e
 ```
 
 ## 💅 Linting
@@ -135,11 +135,11 @@ npm run test:e2e
 To run the linter you can execute:
 
 ```bash
-npm run lint
+pnpm run lint
 ```
 
 And for trying to fix lint issues automatically, you can run:
 
 ```bash
-npm run lint:fix
+pnpm run lint:fix
 ```
