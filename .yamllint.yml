@@ -3,6 +3,7 @@ extends: default
 
 ignore: |
   node_modules/
+  pnpm-lock.yaml
 
 rules:
   line-length:
@@ -10,7 +11,6 @@ rules:
       /.github/workflows/*.yaml
       /.github/workflows/*.yml
       /.github/settings.yml
-      /*-lock.yaml
   truthy:
     ignore: |
       /.github/workflows/*.yaml

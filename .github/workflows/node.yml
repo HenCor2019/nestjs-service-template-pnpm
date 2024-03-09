@@ -37,7 +37,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies 📥
-        if: steps.${{ env.STORE_PATH }}.outputs.cache-hit != 'true'
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |
           # Bellow npm install is a workaround for https://github.com/swc-project/swc/issues/5616#issuecomment-1651214641
           pnpm install --save-optional \
