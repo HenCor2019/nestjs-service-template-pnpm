@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
@@ -65,6 +66,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
@@ -101,7 +103,7 @@ jobs:
         uses: actions/cache@v4
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         with:
-          path: ${{ env.STORE_PATH }}/node_modules
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/node.yml') }}
 
   build:
@@ -115,6 +117,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
