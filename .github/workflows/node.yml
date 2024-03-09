@@ -145,4 +145,4 @@ jobs:
             "@swc/core-linux-x64-musl@1"
 
       - name: Build typescript 📦
-        run: pnpm run build && find dist/main.js
+        run: ls \ && pnpm run build && find dist/main.js
