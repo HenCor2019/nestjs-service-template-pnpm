@@ -20,16 +20,17 @@ jobs:
       - name: Checkout 🛬
         uses: actions/checkout@v4
 
-      - name: Setup Node ⚙️
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
       - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Get pnpm store directory 🍟
         shell: bash
@@ -40,13 +41,13 @@ jobs:
         uses: actions/cache@v4
         id: cache-node-modules
         with:
-          path: ${{ env.STORE_PATH }}/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/node.yml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies 📥
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        # if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |
           # Bellow npm install is a workaround for https://github.com/swc-project/swc/issues/5616#issuecomment-1651214641
           pnpm install --save-optional \
@@ -55,29 +56,23 @@ jobs:
       - name: Lint code 💅
         run: pnpm run lint
 
-      - name: Save Cache Dependencies ⌛️
-        uses: actions/cache@v4
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        with:
-          path: ${{ env.STORE_PATH }}/node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/node.yml') }}
-
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛬
         uses: actions/checkout@v4
 
-      - name: Setup Node ⚙️
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
       - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Get pnpm store directory 🍟
         shell: bash
@@ -88,7 +83,7 @@ jobs:
         uses: actions/cache@v4
         id: cache-node-modules
         with:
-          path: ${{ env.STORE_PATH }}/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/node.yml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -108,7 +103,7 @@ jobs:
         uses: actions/cache@v4
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         with:
-          path: ${{ env.STORE_PATH }}/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/node.yml') }}
 
   build:
@@ -118,16 +113,17 @@ jobs:
       - name: Checkout 🛬
         uses: actions/checkout@v4
 
-      - name: Setup Node ⚙️
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
       - name: Install pnpm 🐒
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Get pnpm store directory 🍟
         shell: bash
@@ -138,7 +134,7 @@ jobs:
         uses: actions/cache@v4
         id: cache-node-modules
         with:
-          path: ${{ env.STORE_PATH }}/node_modules
+          path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('.github/workflows/node.yml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-

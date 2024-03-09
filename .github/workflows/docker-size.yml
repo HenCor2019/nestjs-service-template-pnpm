@@ -4,8 +4,6 @@ name: "Docker size"
 on:
   push:
     branches: ["develop"]
-  pull_request:
-    branches: ["develop"]
 
 permissions:
   pull-requests: write
@@ -37,7 +35,7 @@ jobs:
             image_size=$(<base-docker-image.txt)
           else
             echo "Docker image not available in the cache"
-            docker build . -t service
+            docker build -t service . --target production
             image_size=$(docker images service | awk 'NR==2 {print $NF}')
           fi
           echo "$image_size" > base-docker-image.txt
@@ -53,7 +51,7 @@ jobs:
       - name: 🐳 Calculate docker image size in ${{ github.head_ref }}
         id: docker-head
         run: |
-          docker build . -t service
+          docker build -t service . --target production
           image_size=$(docker images service | awk 'NR==2 {print $NF}')
           echo "image_size=$image_size" >> "$GITHUB_OUTPUT"
   write-comment:
