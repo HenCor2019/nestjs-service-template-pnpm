@@ -2,3 +2,4 @@ packages:
   - "apps/**"
   - "packages/**"
   - "!**/test/**"
+ignore-workspace-root-check: true
