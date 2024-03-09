@@ -9,8 +9,8 @@ ENV NODE_ENV=development
 RUN corepack enable
 
 COPY package*.json pnpm-lock.yaml ./
-RUN pnpm fetch --frozen-lockfile
-RUN pnpm install --frozen-lockfile
+RUN pnpm fetch --frozen-lockfile && \
+    pnpm install --frozen-lockfile
 
 COPY tsconfig*.json ./
 COPY .swcrc ./
@@ -23,7 +23,8 @@ CMD ["pnpm", "run", "dev"]
 FROM base AS build
 
 RUN corepack enable
-RUN apk update && apk add --no-cache dumb-init=1.2.5-r2
+RUN apk update && \
+    apk add --no-cache dumb-init=1.2.5-r2
 
 COPY package*.json pnpm-lock.yaml ./
 # Bellow npm install is a workaround for https://github.com/swc-project/swc/issues/5616#issuecomment-1651214641
