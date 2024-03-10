@@ -95,8 +95,8 @@ jobs:
       - name: Rename Docker images 🍟
         if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO && env.DOCKERHUB_USERNAME }}
         run: |
-          docker tag -t service ${{ env.DOCKERHUB_REPO }}:${{ env.COMMIT_HASH }}
-          docker tag -t service ${{ env.DOCKERHUB_REPO }}:latest
+          docker tag service ${{ env.DOCKERHUB_REPO }}:${{ env.COMMIT_HASH }}
+          docker tag service ${{ env.DOCKERHUB_REPO }}:latest
 
       - name: Push Docker image to Docker Hub ✈️
         if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO && env.DOCKERHUB_USERNAME }}
