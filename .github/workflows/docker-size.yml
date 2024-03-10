@@ -77,12 +77,12 @@ jobs:
     needs: [calculate-head]
     steps:
       - name: Set up Docker Buildx 😎
-        if: ${{ secrets.DOCKERHUB_TOKEN && secrets.DOCKERHUB_REPO }}
+        if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO }}
         uses: docker/setup-buildx-action@v1
 
       - name: Login to Docker Hub
         if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO }}
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u tu_usuario_dockerhub --password-stdin
+        run: echo "${{ env.DOCKERHUB_TOKEN }}" | docker login -u tu_usuario_dockerhub --password-stdin
 
       - name: Get commit hash 🐗
         if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO }}
@@ -92,11 +92,11 @@ jobs:
       - name: Rename Docker images 🍟
         if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO }}
         run: |
-          docker tag -t service ${{ secrets.DOCKERHUB_REPO }}:${{ steps.commit_hash.outputs.COMMIT_HASH }}
-          docker tag -t service ${{ secrets.DOCKERHUB_REPO }}:latest
+          docker tag -t service ${{ env.DOCKERHUB_REPO }}:${{ steps.commit_hash.outputs.COMMIT_HASH }}
+          docker tag -t service ${{ env.DOCKERHUB_REPO }}:latest
 
       - name: Push Docker image to Docker Hub ✈️
         if: ${{ env.DOCKERHUB_TOKEN && env.DOCKERHUB_REPO }}
         run: |
-          docker push ${{ secrets.DOCKERHUB_REPO }}:${{ steps.commit_hash.outputs.COMMIT_HASH }}
-          docker push ${{ secrets.DOCKERHUB_REPO }}:latest
+          docker push ${{ env.DOCKERHUB_REPO }}:${{ steps.commit_hash.outputs.COMMIT_HASH }}
+          docker push ${{ env.DOCKERHUB_REPO }}:latest
